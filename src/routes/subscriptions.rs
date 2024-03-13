@@ -1,14 +1,11 @@
-use actix_web::{web, App, HttpResponse};
-use std::net::TcpListener; //we will bind the port on our own with TcpListener and then hand
-                           // that over to the HttpServer using listen.
-
+use actix_web::{web, HttpResponse};
 
 #[derive(serde::Deserialize)]
-struct FormData {
+pub struct FormData {
     email: String,
-    name: String
+    name: String,
 }
 
-async fn subscribe(_form: web::Form<FormData>) -> HttpResponse {
+pub async fn subscribe(_form: web::Form<FormData>) -> HttpResponse {
     HttpResponse::Ok().finish()
 }
